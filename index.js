@@ -40,7 +40,7 @@ function showResults(result){ //a diff item each time
 function getData(data){ //data is anonymous API object
 	// console.log(data); //so we can see the object we get from API 
 	const results = data.items.map((item) => showResults(item)); //grab data in items object. map thru, pass to showResults
-	$('.js-results').html(results); //render on page in empty div using results const
+	$('.js-results').html(results).prop('hidden', false); //render on page in empty div using results const
 	// const nextPage = data.nextPageToken.val();
 	// $('.js-nextPage').html(nextPage); //next page key from object
 }
