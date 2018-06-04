@@ -19,45 +19,114 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   content: '';
 }
 
+body {
+	font-family: 'Roboto', serif;
+	background-color: #1F1F1F;
+	color: #FFFFFF;
+}
+
+a {
+	color: #f74b4e;
+}
+
 h1 {
-	text-align: center;
-	padding: ;
+	font-family: 'Anton', sans-serif;
+	font-size: 2.5em;
+	text-align: left;
+	padding: .5em 0 2.5em 1em;
 }
 
 legend {
+	font-size: 1.5em;
+	padding-bottom: 1.5em;
 	text-align: center;
+	color: #F74B4E;
 }
 
-#searchBox {
-	color: grey;
+input[type="text"] {
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+input[type="text"]:focus {
+    outline: none !important;
+    border:1px solid red;
+    box-shadow: 0 0 8px #F74B4E;
 }
 
 form {
 	display: block;
 	text-align: center;
+	padding-bottom: 1.5em;
 }
 
-.row {
-	display: inline;
-	text-align: center;
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;        
 }
 
-.col-sm-4 {
-	display: inline;
+.fa-youtube {
+	color: #F74B4E;
 }
 
-.thumb {
-	position: absolute;
-	display: inline-block;
+.fa-search {
+	color: #FFFFFF;
+}
+
+span {
+	font-size: .8em;
+	color: #ADADAD;
+	padding: 0 0 .5em 0;
 }
 
 .js-img {
 	padding-top: 5px;
 	width: 100%;
+	max-width: 320px;
+	max-height: 180px;
+	object-fit: contain;
+}
+
+.title {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.title a {
+	word-wrap: break-word;
+	color: white;
 }
 
 .channel {
-	font-size: 100%;
-	position: relative;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0;
+	padding-bottom: .5em;
 	display: inline-block;
 }
+
+/* Mobile defaults */
+.col-3, .col-4, .col-6, .col-12 {
+  width: 100%;
+}
+
+@media only screen and (max-width: 639px) {
+	h1 {
+		font-size: 1.5em;
+		padding-bottom: 1em;
+	}
+
+	legend {
+		font-size: 1em;
+	}
+}
+
+

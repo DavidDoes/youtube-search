@@ -14,21 +14,20 @@ function buildApi(searchTerm, callback) { //line 6-10 is expected from YouTube A
 
 function showResults(result){ //a diff item each time
 	return `
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 thumb" style="padding-left: 0px; padding-right: 0px;">
-					<a href="https://www.youtube.com/watch?v=${result.id.videoId}"><img class="js-img" src="${result.snippet.thumbnails.medium.url}"></a>
-				<div class="col-sm-4">
-					<p class="channel"><a href="https://www.youtube.com/watch?v=${result.snippet.channelId}">More videos by ${result.snippet.channelTitle}<p>
-				</div>
+			<div class="col-sm-4">
+			<p class="title"><a href="https://www.youtube.com/watch?v=${result.id.videoId}" aria-label="${result.snippet.title}">${result.snippet.title}</a></p>
+					<a href="https://www.youtube.com/watch?v=${result.id.videoId}" aria-label="${result.snippet.title}"><img class="js-img" src="${result.snippet.thumbnails.medium.url}" alt="${result.snippet.title}" aria-label="${result.snippet.title}"></a>
+				<div>
+					
+					<p class="channel"><a href="https://www.youtube.com/watch?v=${result.snippet.channelId}" aria-label="${result.snippet.channelId}">More videos by ${result.snippet.channelTitle}</p>
 				</div>
 			</div>
-		</div>
 		`
 }
 
 
-// function renderLoaders(item){
+//not implemented
+// function renderPageButtons(item){
 // 	return `
 // 		<div>
 // 			<button>Next Page</button>
@@ -36,11 +35,20 @@ function showResults(result){ //a diff item each time
 // 	`
 // }
 
+
+
 //getData happens for each item we come across
 function getData(data){ //data is anonymous API object
-	// console.log(data); //so we can see the object we get from API 
+	console.log(data); //so we can see the object we get from API 
 	const results = data.items.map((item) => showResults(item)); //grab data in items object. map thru, pass to showResults
+	const count = data.pageInfo.totalResults;
 	$('.js-results').html(results).prop('hidden', false); //render on page in empty div using results const
+	$('.js-main').prop('hidden', false);
+	$('#countResults').html(`
+			About ${count} total results.
+		`);
+
+	//not implemented
 	// const nextPage = data.nextPageToken.val();
 	// $('.js-nextPage').html(nextPage); //next page key from object
 }
